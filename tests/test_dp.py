@@ -1,20 +1,30 @@
 import unittest
 
-from DinamicPrpgramming.dp import Stair
+from DinamicPrpgramming.dp import Stair, Stock
 from utils.timer import timer
 
 
 class TestDP(unittest.TestCase):
     def setUp(self):
-        self.stair = Stair()
-        self.steps = 35
+        pass
 
     @timer
-    def test_recursion(self):
-        res = self.stair.recursion(self.steps)
+    def test_stair(self):
+        stair = Stair()
+        steps = 35
+        res = stair.recursion(steps)
+        print(res)
+
+        res = stair.dp(steps)
         print(res)
 
     @timer
-    def test_dp(self):
-        res = self.stair.dp(self.steps)
+    def test_stock(self):
+        stock = Stock()
+        prices = [7, 1, 5, 3, 6, 4]
+        prices = [_ for _ in range(950)]
+        res = stock.recursion(prices)
+        print(res)
+
+        res = stock.dp(prices)
         print(res)

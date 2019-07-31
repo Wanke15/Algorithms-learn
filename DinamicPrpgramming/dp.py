@@ -30,3 +30,23 @@ class Stair(BaseDP):
         for i in range(2, n):
             ways.append(ways[i-1]+ways[i-2])
         return ways[-1]
+
+
+class Stock(BaseDP):
+    def __init__(self):
+        super().__init__()
+
+    def recursion(self, prices):
+        if len(prices) < 2:
+            return 0
+        return max(prices[-1] - min(prices[:-1]), self.recursion(prices[:-1]))
+
+    def dp(self, prices):
+        result = [0]
+        if len(prices) < 2:
+            return 0
+        minPrice = prices[0]
+        for i in range(1, len(prices)):
+            minPrice = min(minPrice, prices[i - 1])
+            result.append(max(prices[i] - minPrice, result[i - 1]))
+        return result[-1]
