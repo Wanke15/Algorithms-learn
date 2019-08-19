@@ -1,5 +1,7 @@
 from abc import ABC, abstractmethod
 
+from functools import lru_cache
+
 
 class BaseDP(ABC):
     def __init__(self):
@@ -18,6 +20,7 @@ class Stair(BaseDP):
     def __init__(self):
         super().__init__()
 
+    @lru_cache(maxsize=32)
     def recursion(self, n):
         if n <= 2:
             return n
@@ -50,3 +53,26 @@ class Stock(BaseDP):
             minPrice = min(minPrice, prices[i - 1])
             result.append(max(prices[i] - minPrice, result[i - 1]))
         return result[-1]
+
+
+class LCS(BaseDP):
+    def __init__(self):
+        super().__init__()
+
+
+    def get_all_subsequence(self, seq):
+        pass
+
+    def violence(self, seq1, seq2):
+        res = ''
+        for id1, s1 in enumerate(seq1):
+            for id2, s2 in enumerate(seq2):
+                pass
+
+
+
+    def recursion(self, seq1, seq2):
+        pass
+
+    def dp(self, seq1, seq2):
+        pass
